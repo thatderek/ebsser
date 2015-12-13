@@ -1,0 +1,14 @@
+{
+	"AWSTemplateFormatVersion" : "2010-09-09",
+	"Description" : "The cft responsible for creating buckets in which lambda functions will be uploaded to. Note: Bucket name is prefixed with the account number.",
+	"Resources" : {
+		"lambdaS3" : {
+			"Type" : "AWS::S3::Bucket", 
+			"Properties" : { 
+				"BucketName" : { 
+					"Fn::Join" : [ "-", [{ "Ref" : "AWS::AccountId" }, "ebsser"]]
+				}
+			}
+		}
+	}
+}
